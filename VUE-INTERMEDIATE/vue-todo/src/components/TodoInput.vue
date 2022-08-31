@@ -7,7 +7,7 @@
     </span>
     <AlertModal v-if="showModal" @close="showModal = false">
         <h3 slot="header">경고!!
-          <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark closeModalBtn" @click="showModal = false"></i>
         </h3>
 
         <h3 slot="body">무언가를 입력하세요.</h3>
@@ -18,27 +18,27 @@
 <script>
   import AlertModal from './common/AlertModal.vue'
 export default {
-data:function() {
+data() {
   return {
     newTodoItem: "",
     showModal: false
   }
 },
 methods : {
-  addTodo: function() {
-    if (this.newTodoItem !== "") {
-      this.$emit('addTodoItem',this.newTodoItem);
+  addTodo() {
+    if (this.newTodoItem !== "") {  
+      this.$store.commit('addOneItem',this.newTodoItem);
       this.clearInput()
     }else {
       this.showModal = !this.showModal;
     }
   },
-  clearInput: function() {
+  clearInput() {
     this.newTodoItem = ""
   }
 },
 components: {
-  AlertModal: AlertModal
+  AlertModal
 }
 }
 </script>
@@ -68,5 +68,7 @@ input:focus {
 	color: white;
 	vertical-align: middle;
 }
-
+.closeModalBtn {
+  color:#42b983;
+}
 </style>
