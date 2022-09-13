@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>{{this.userInfo.id}}</p>
-    <p>{{this.userInfo.karma}}</p>
-    <p>{{this.userInfo.created}}</p>
+    <p>{{userInfo.id}}</p>
+    <p>{{userInfo.karma}}</p>
+    <p>{{userInfo.created}}</p>
   </div>
 </template>
 

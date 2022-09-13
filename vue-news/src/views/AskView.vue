@@ -1,7 +1,7 @@
 <template>
     <div>
         <p v-for="item in fetchedAsk" v-bind:key="item.id">
-        <a v-bind:href="item.url">
+        <a v-bind:href="`/item/${item.id}`">
             {{ item.title }}
         </a>
         <small>{{ item.time_ago }} | by {{item.user}}</small>
@@ -17,9 +17,6 @@ import { mapGetters } from 'vuex';
         ...mapGetters({
             fetchedAsk:"fetchedAsk",
         })
-        // ask() {
-        //     return this.$store.state;
-        // }
       },
       created() {
         this.$store.dispatch("FETCH_ASKS")
