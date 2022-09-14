@@ -1,6 +1,7 @@
 <template>
     <div>
-        <ul class="news-list">
+        <list-item></list-item>
+        <!-- <ul class="news-list">
         <li v-for="item in this.$store.state.jobs" v-bind:key="item.id" class="post">
             <div class="points">
                 {{ item.points || 0 }}
@@ -13,25 +14,21 @@
                 </p>
                 <small class="link-text">
                     {{ item.time_ago }} by 
-                <!-- <router-link class="link-text" :to="`/user/${item.user}`">{{item.domain}}</router-link> -->
                 <a :href="item.url">{{ item.domain}}</a>
             </small>
             </div>
         </li>
-    </ul>
+    </ul> -->
+
     </div>
   </template>
   
   <script>
+import ListItem from "../components/ListItem.vue"
   export default {
-      data() {
-          return {
-              jobs : []
-          }
-      },
-      created() {
-        this.$store.dispatch("FETCH_JOBS")
-      }
+    components: {
+        ListItem,
+    }
   }
   </script>
   

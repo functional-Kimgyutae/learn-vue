@@ -1,7 +1,11 @@
 <template>
   <div>
     <section>
-        <div class="user-container">
+        <user-profile>
+            <router-link :to="`/user/${fetchedItem.user}`" slot="username">{{ fetchedItem.user }}</router-link>
+            <template slot="time">{{ fetchedItem.time_ago }}</template>
+        </user-profile>
+        <!-- <div class="user-container">
             <div>
                 <i class="fa-solid fa-user"></i>
             </div>
@@ -9,11 +13,14 @@
                 <router-link :to="`/user/${fetchedItem.user}`">
                     {{ fetchedItem.user }}
                 </router-link>
-            </div>
+            
             <div class="time">
                 {{ fetchedItem.time_ago}}
             </div>
         </div>
+        </div> -->
+    </section>
+    <section>
         <h2>{{ fetchedItem.title }}</h2>
     </section>
     <section>
@@ -24,10 +31,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import UserProfile from "../components/UserProfile.vue"
 export default {
+    components: {
+        UserProfile,
+    },
     computed: {
         ...mapGetters(['fetchedItem']),
-
     },
     created() {
         const id = this.$route.params.id;
