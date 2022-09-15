@@ -1,34 +1,29 @@
 <template>
     <div>
         <list-item></list-item>
-    <!-- <ul class="news-list">
-        <li v-for="item in fetchedAsk" v-bind:key="item.id" class="post">
-            <div class="points">
-                {{ item.points }}
-            </div>
-            <div>
-                <p class="news-title">
-                    <router-link :to="`item/${item.id}`">
-                        {{ item.title }}
-                    </router-link>
-                </p>
-                <small class="link-text">
-                    {{ item.time_ago }} by 
-                <router-link class="link-text" :to="`/user/${item.user}`">{{item.user}}</router-link>
-            </small>
-            </div>
-        </li>
-    </ul> -->
   </div>
   </template>
   
   <script>
 import ListItem from "../components/ListItem.vue"
-
+import ListMixin from "../mixins/ListMixin.js"
 export default {
-    components: {
-        ListItem,
-    }
+  components: {
+    ListItem,
+  },
+  mixins: [ListMixin],
+    // created() {
+    //     bus.$emit("start:spinner")
+    //     setTimeout(() => {
+    //       this.$store.dispatch("FETCH_ASKS")
+    //       .then(()=> {
+    //         bus.$emit('end:spinner');
+    //       })
+    //       .catch((error) => {
+    //         console.log(error);
+    //       });
+    //     }, 3000);
+    // }
 }
   </script>
   
